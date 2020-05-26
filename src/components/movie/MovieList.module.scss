@@ -1,0 +1,25 @@
+.movies{
+  min-height:500px;
+  padding:70px;
+  background-color: #232323;
+}
+
+.movie_container{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 60px;
+
+  & > div {
+    height: 530px;
+  }
+}
+
+.not_found{
+  opacity: 0.8;
+  color: #FFFFFF;
+  font-size: 52px;
+  letter-spacing: 0;
+  line-height: 63px;
+  text-align: center;
+  margin-top:160px;
+}
