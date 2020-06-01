@@ -1,8 +1,8 @@
 import React from 'react';
 
 import ErrorBoundary from './components/error/ErrorBoundary';
-import Home from './components/home/Home';
-import MoviePage from './components/movie/MoviePage';
+import Home from './pages/Home';
+import MoviePage from './pages/MoviePage';
 
 
 export default class App extends React.Component {

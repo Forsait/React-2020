@@ -1,8 +1,10 @@
 import React from 'react';
 
-import Search from '../search/Search';
-import MovieList from '../movie/MovieList';
-import Footer from '../common/Footer';
+import Search from '../containers/search/Search';
+import MovieList from '../containers/movie/MovieList';
+import Footer from '../components/common/Footer';
+
+import { getMovieList } from '../services/movie.service';
 
 const startSearchOptions = {
   searchBy: 'title',
@@ -30,8 +32,7 @@ export default class Home extends React.Component {
   }
 
   searchFormSubmit(opt, skipUpdateTotal = false) {
-    const url = `/api/movies?offset=${this.offset}&limit=${this.limit}&sortBy=${opt.sortBy}&search=${opt.query || ''}&searchBy=${opt.searchBy}&sortOrder=desc`
-    fetch(url)
+    getMovieList(opt)
       .then(res => res.json())
       .then((res) => {
         console.log(res)

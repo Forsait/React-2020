@@ -1,9 +1,10 @@
 import React from 'react';
 
 import styles from './Search.module.scss';
-import Brand from '../common/Brand';
-import SearchForm from './SearchForm';
-import Radiobuttons from '../common/Radiobuttons';
+import Header from '../../components/common/Header';
+import Westside from '../../components/common/Westside';
+import SearchForm from '../../components/searchForm/SearchForm';
+import Radiobuttons from '../../components/common/Radiobuttons';
 
 const options = {
   title: 'Sort by',
@@ -84,15 +85,15 @@ export default class Search extends React.Component {
 
   render() {
     let resTotal = '';
-    if (this.state.isSearchSubmit && this.props.resultTotal > 0) {
-      resTotal = `${this.props.resultTotal} movie found`
+    if (this.state.isSearchSubmit) {
+      resTotal = `${+this.props.resultTotal} movie found`;
     }
 
     return (
       <>
         <div className={styles.search}>
           <div className={styles.back_image}></div>
-          <Brand className={styles.brand} />
+          <Header className={styles.brand} />
 
           <div className={styles.form_container}>
             <h1>FIND YOUR MOVIE</h1>
@@ -104,14 +105,14 @@ export default class Search extends React.Component {
               change={this.searchByChange}/>
           </div>
         </div>
-        <div className={`${styles.result_container} westside`}>
+        <Westside className={styles.result_container}>
           <div className={styles.q_1}>{resTotal}</div>
           <Radiobuttons 
             className={styles.r_1}
             title={options.title}
             list={options.list}
             change={this.sortByChange}/>
-        </div>
+        </Westside>
       </>
     )
   }

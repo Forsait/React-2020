@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './MovieList.module.scss';
-import Movie from './Movie';
+import Movie from '../../components/movieItem/Movie';
 
 export default class MovieList extends React.Component{
 
