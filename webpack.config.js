@@ -1,5 +1,8 @@
 const path = require('path');
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const CopyPlugin = require('copy-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const nodeEnv = process.env.NODE_ENV ? process.env.NODE_ENV.trim() : '';
 const isProd = nodeEnv === 'production';
@@ -18,7 +21,15 @@ module.exports = {
   devServer: {
     port: 3000,
     inline: true,
-    overlay: true
+    overlay: true,
+    proxy: {
+      '/api': {
+        target: 'https://reactjs-cdp.herokuapp.com/',
+        pathRewrite: {'^/api' : ''},
+        secure: false,
+        changeOrigin: true
+      }
+    }
   },
   module: {
     rules: [
@@ -28,16 +39,61 @@ module.exports = {
         use: {
           loader: "babel-loader"
         }
-      }
+      },
+      {
+        test: /\.module\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true
+            }
+          },
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+        exclude: /\.module\.scss$/,
+      },
+      {
+        test: /\.(png|jpeg|jpg|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[ext]',
+              esModule: false,
+            }
+          },
+        ],
+      },
     ]
   },
   resolve: {
     extensions: ['.js'],
+    alias: {
+      Assets: path.resolve(__dirname, 'src/assets/'),
+      Components: path.resolve(__dirname, 'src/components/'),
+      Containers: path.resolve(__dirname, 'src/containers/'),
+      Pages: path.resolve(__dirname, 'src/pages/'),
+      Services: path.resolve(__dirname, 'src/services/'),
+    }
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html",
-    })
+      template: './src/index.html',
+      filename: './index.html',
+      favicon: './src/assets/react.svg'
+    }),
+    new CleanWebpackPlugin(),
+    // new CopyPlugin({
+    //   patterns: [
+    //     { from: 'src/assets', to: 'assets' },
+    //   ],
+    // }),
   ]
 };

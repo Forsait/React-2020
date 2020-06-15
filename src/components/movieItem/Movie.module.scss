@@ -1,0 +1,44 @@
+.film_item{
+  color: #FFFFFF;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 18px;
+}
+
+.film_poster{
+  width: 100%;
+  height: 450px;
+}
+
+.movie_info{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  margin-top:20px;
+  font-size: 18px;
+  opacity: 0.7;
+  color: #FFFFFF;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.movie_date{
+  padding:4px 8px;
+  border: 1px solid #979797;
+  border-radius: 4px;
+  opacity: 0.7;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.genre{
+  margin-top:10px;
+  opacity: 0.5;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+}
