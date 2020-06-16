@@ -23,7 +23,7 @@ export default class Radiobuttons extends React.Component {
     })
 
     return (
-      <div className={styles.radio_container + ' ' + this.props.className}>
+      <div className={styles.radio_container + ' r-radio ' + this.props.className}>
         <span className={styles.title}>{this.props.title}</span>
         <div className={styles.radio_list} onChange={this.changeRadio}>
           {arr}
