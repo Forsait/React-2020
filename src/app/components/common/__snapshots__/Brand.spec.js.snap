@@ -1,3 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Brand component should be render correctly 1`] = `ShallowWrapper {}`;
+exports[`Brand component should be render correctly 1`] = `
+<div
+  className="  undefined"
+>
+  <span
+    style={
+      Object {
+        "fontWeight": 800,
+      }
+    }
+  >
+    netflix
+  </span>
+  roulette
+</div>
+`;

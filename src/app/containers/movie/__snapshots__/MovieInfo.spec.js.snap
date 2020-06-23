@@ -1,3 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieInfo component should be render correctly 1`] = `ShallowWrapper {}`;
+exports[`MovieInfo component should be render correctly 1`] = `
+<Fragment>
+  <div>
+    <Header>
+      <a
+        href="#"
+      >
+        <img
+          src={
+            Object {
+              "ReactComponent": "SvgMock",
+            }
+          }
+        />
+      </a>
+    </Header>
+    <div>
+      <img
+        src="https://image.tmdb.org/t/p/w500/ln6d5Okr6VK5vfQVobJTiYxeD0l.jpg"
+      />
+      <div>
+        <div>
+          <h1>
+            Jurassic World: Fallen Kingdom
+          </h1>
+          <span>
+            0
+          </span>
+        </div>
+        <div>
+          Oscar winning movie
+        </div>
+        <div>
+          <div>
+            <span>
+              2018
+            </span>
+            <span>
+              year
+            </span>
+          </div>
+          <div>
+            <span>
+              -
+            </span>
+            <span>
+              min
+            </span>
+          </div>
+        </div>
+        <div>
+          A volcanic eruption threatens
+        </div>
+      </div>
+    </div>
+  </div>
+  <Westside>
+    <div>
+      Film by 
+      <span>
+        Action
+      </span>
+       genre
+    </div>
+  </Westside>
+</Fragment>
+`;

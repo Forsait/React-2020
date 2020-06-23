@@ -9,5 +9,11 @@ module.exports = {
   ],
   testPathIgnorePatterns: [
     "<rootDir>/cypress"
-  ]
+  ],
+  collectCoverageFrom: [
+    "**/src/**/*.{js,jsx}",
+    "!**/node_modules/**",
+  ],
+  setupFiles: ['./src/enzyme.js'],
+  snapshotSerializers: ["enzyme-to-json/serializer"],
 }

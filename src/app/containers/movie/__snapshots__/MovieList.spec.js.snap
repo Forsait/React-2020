@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieList component should be render correctly 1`] = `ShallowWrapper {}`;
+exports[`MovieList component should be render correctly 1`] = `
+<div>
+  <div>
+    No films found
+  </div>
+</div>
+`;

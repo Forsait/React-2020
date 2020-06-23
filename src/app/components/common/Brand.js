@@ -10,7 +10,7 @@ export default class Brand extends React.Component {
 
   render() {
     return (
-      <div className={`${this.props.className || ''}  ${styles.brand}`}>
+      <div className={`brand ${this.props.className || ''}  ${styles.brand}`}>
         <span style={{fontWeight: 800}}>netflix</span>roulette
       </div>
     )
