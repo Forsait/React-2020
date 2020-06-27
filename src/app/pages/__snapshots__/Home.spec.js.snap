@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home component should be render correctly 1`] = `
+<Fragment>
+  <Search
+    resultTotal={null}
+    submit={[Function]}
+  />
+  <MovieList
+    movieArr={Array []}
+  />
+  <Footer />
+</Fragment>
+`;

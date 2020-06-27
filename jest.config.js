@@ -2,10 +2,10 @@ module.exports = {
   testRegex: "((\\.|/*.)(spec))\\.js?$",
   moduleNameMapper: {
     "^.+\\.(css|less|scss)$": "babel-jest",
-    "\\.svg": "<rootDir>/svgMock.js"
+    "\\.svg": "<rootDir>/svgMock.js",
   },
   setupFilesAfterEnv: [
-    "<rootDir>/src/enzyme.js"
+    "<rootDir>/enzyme.config.js"
   ],
   testPathIgnorePatterns: [
     "<rootDir>/cypress"
@@ -13,7 +13,9 @@ module.exports = {
   collectCoverageFrom: [
     "**/src/**/*.{js,jsx}",
     "!**/node_modules/**",
+    "!**/src/app/mocks/*.{js,jsx}",
+    "!**/src/main.js",
   ],
-  setupFiles: ['./src/enzyme.js'],
+  setupFiles: ['./enzyme.config.js'],
   snapshotSerializers: ["enzyme-to-json/serializer"],
 }

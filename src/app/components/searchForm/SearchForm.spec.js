@@ -10,7 +10,7 @@ describe('SearchForm component', () => {
     expect(com).toMatchSnapshot()
   });
 
-  fit('should benn called submitSearch', () => {
+  it('should benn called submitSearch', () => {
     const submitSearch = jest.fn();
     const com = shallow(<SearchForm />);
     com.instance().submitSearch = submitSearch;
