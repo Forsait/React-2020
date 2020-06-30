@@ -50,11 +50,6 @@ export default class MoviePage extends React.Component {
       })
   }
 
-  getReleaseYear(dateStr) {
-    if (!dateStr) return '';
-    return dateStr.slice(0, 4);
-  }
-
   render() {
     return <>
       <MovieInfo movie={this.state.movie} />

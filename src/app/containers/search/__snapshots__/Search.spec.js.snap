@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component should be render correctly 1`] = `
+<Fragment>
+  <div>
+    <div />
+    <Header />
+    <div>
+      <h1>
+        FIND YOUR MOVIE
+      </h1>
+      <SearchForm
+        submitForm={[Function]}
+      />
+      <Radiobuttons
+        change={[Function]}
+        list={
+          Array [
+            Object {
+              "key": "title",
+              "title": "title",
+            },
+            Object {
+              "key": "genres",
+              "title": "genre",
+            },
+          ]
+        }
+        title="Search by"
+      />
+    </div>
+  </div>
+  <Westside>
+    <div />
+    <Radiobuttons
+      change={[Function]}
+      list={
+        Array [
+          Object {
+            "key": "release_date",
+            "title": "release date",
+          },
+          Object {
+            "key": "vote_average",
+            "title": "rating",
+          },
+        ]
+      }
+      title="Sort by"
+    />
+  </Westside>
+</Fragment>
+`;

@@ -76,11 +76,12 @@ module.exports = {
   resolve: {
     extensions: ['.js'],
     alias: {
+      App: path.resolve(__dirname, 'src/app/'),
       Assets: path.resolve(__dirname, 'src/assets/'),
-      Components: path.resolve(__dirname, 'src/components/'),
-      Containers: path.resolve(__dirname, 'src/containers/'),
-      Pages: path.resolve(__dirname, 'src/pages/'),
-      Services: path.resolve(__dirname, 'src/services/'),
+      Components: path.resolve(__dirname, 'src/app/components/'),
+      Containers: path.resolve(__dirname, 'src/app/containers/'),
+      Pages: path.resolve(__dirname, 'src/app/pages/'),
+      Services: path.resolve(__dirname, 'src/app/services/'),
     }
   },
   plugins: [

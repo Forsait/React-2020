@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radiobuttons component should be render correctly 1`] = `
+<div
+  className="undefined r-radio undefined"
+>
+  <span>
+    Title
+  </span>
+  <div
+    onChange={[Function]}
+  >
+    <label
+      key="Title0"
+    >
+      <input
+        defaultChecked={true}
+        id="Title0"
+        name="Title"
+        type="radio"
+        value="key"
+      />
+      <span>
+        title
+      </span>
+    </label>
+    <label
+      key="Title1"
+    >
+      <input
+        defaultChecked={false}
+        id="Title1"
+        name="Title"
+        type="radio"
+        value="key 1"
+      />
+      <span>
+        title 1
+      </span>
+    </label>
+  </div>
+</div>
+`;
