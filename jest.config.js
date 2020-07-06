@@ -15,6 +15,7 @@ module.exports = {
     "!**/node_modules/**",
     "!**/src/app/mocks/*.{js,jsx}",
     "!**/src/main.js",
+    "!**/src/app/utils/test-utils.js",
   ],
   setupFiles: ['./enzyme.config.js'],
   snapshotSerializers: ["enzyme-to-json/serializer"],

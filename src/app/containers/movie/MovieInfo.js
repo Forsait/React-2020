@@ -10,7 +10,7 @@ import { getYear } from '../../utils/date';
 
 import searchIcon from 'Assets/icon-search.svg';
 
-class MovieInfo extends React.Component {
+export class MovieInfo extends React.Component {
   constructor(props) {
     super(props);
   }

@@ -8,7 +8,7 @@ export const getMovieInfo = (id) => {
   return dispatch => {
     // dispatch({...something in future});
 
-    getMovieById(id)
+    return getMovieById(id)
       .then(res => res.json())
       .then(res => {
         dispatch({

@@ -9,7 +9,7 @@ import Westside from '../../components/common/Westside';
 import SearchForm from '../../components/searchForm/SearchForm';
 import Radiobuttons from '../../components/common/Radiobuttons';
 
-class Search extends React.Component {
+export class Search extends React.Component {
   constructor(props){
     super(props);
     this.submitForm = this.submitForm.bind(this);
@@ -62,8 +62,6 @@ class Search extends React.Component {
     if (this.state.isSearchSubmit) {
       resTotal = `${+this.props.resultTotal} movie found`;
     }
-
-    console.log(this.props);
 
     return (
       <>

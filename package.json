@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --open",
     "build": "webpack",
     "build-prod": "cross-env NODE_ENV=production webpack",
-    "test": "jest --coverage --update-snapshot",
+    "test": "jest --coverage",
     "e2e": "cypress open"
   },
   "author": "",

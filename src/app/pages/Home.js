@@ -6,7 +6,7 @@ import MovieList from '../containers/movie/MovieList';
 import Footer from '../components/common/Footer';
 import { moviesDataSelector } from '../selectors';
 
-class Home extends React.Component {
+export class Home extends React.Component {
 
   constructor(props){
     super(props);

@@ -2,13 +2,8 @@
 
 exports[`Home component should be render correctly 1`] = `
 <Fragment>
-  <Search
-    resultTotal={null}
-    submit={[Function]}
-  />
-  <MovieList
-    movieArr={Array []}
-  />
+  <Connect(Search) />
+  <MovieList />
   <Footer />
 </Fragment>
 `;
