@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { getMovieInfo } from '../../actions/movie-info';
 
 import styles from './MovieInfo.module.scss';
 import Header from '../../components/common/Header';
@@ -7,15 +10,19 @@ import { getYear } from '../../utils/date';
 
 import searchIcon from 'Assets/icon-search.svg';
 
-export default class MovieInfo extends React.Component {
+class MovieInfo extends React.Component {
   constructor(props) {
     super(props);
-
   }
+
+  componentDidMount() {
+    this.props.getMovieInfo(353081);
+  }
+
   render() {
-    let genreView = '';
+    let genreView = null;
     if (this.props.movie.genres) {
-      genreView = <div>Film by <span className={styles.som}>{this.props.movie.genres[0]}</span> genre</div>
+      genreView = <div>Film by <span className={styles.som}>{this.props.movie.genres[0]}</span> genre</div>;
     }
 
     return <>
@@ -54,3 +61,16 @@ export default class MovieInfo extends React.Component {
     </>
   }
 }
+
+function mapStateToProps(state) {
+  const { movieInfo } = state.movieInfo;
+  return { movie: movieInfo };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getMovieInfo: id => dispatch(getMovieInfo(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);

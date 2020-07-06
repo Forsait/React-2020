@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '../../utils/test-utils';
 
 import MovieInfo from './MovieInfo';
 import { film } from '../../mocks/data.js';

@@ -12,3 +12,10 @@ export const film = {
   vote_average: 0,
   vote_count: 28,
 }
+
+export const moviesData = {
+  data: new Array(6).fill(film),
+  limit: 0,
+  offset: 0,
+  total: 0,
+}

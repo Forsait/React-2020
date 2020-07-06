@@ -1,41 +1,15 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+import { homeChange } from '../../actions/home';
+
 import styles from './Search.module.scss';
 import Header from '../../components/common/Header';
 import Westside from '../../components/common/Westside';
 import SearchForm from '../../components/searchForm/SearchForm';
 import Radiobuttons from '../../components/common/Radiobuttons';
 
-const options = {
-  title: 'Sort by',
-  list: [
-    {
-      key: 'release_date',
-      title: 'release date'
-    },
-    {
-      key: 'vote_average',
-      title: 'rating'
-    }
-  ]
-};
-
-const checkOptions = {
-  title: 'Search by',
-  list: [
-    {
-      key: 'title',
-      title: 'title'
-    },
-    {
-      key: 'genres',
-      title: 'genre'
-    }
-  ]
-}
-
-
-export default class Search extends React.Component {
+class Search extends React.Component {
   constructor(props){
     super(props);
     this.submitForm = this.submitForm.bind(this);
@@ -43,14 +17,17 @@ export default class Search extends React.Component {
     this.searchByChange = this.searchByChange.bind(this);
 
     this.state = {
-      isSearchSubmit: false,
       searchBy: 'title',
       sortBy: 'release_date',
       query: '',
-    }
+    };
   }
 
-  submit(stateNexValue) {
+  componentDidMount() {
+    this.submit();
+  }
+
+  submit(stateNexValue = {}) {
     this.props.submit({
       searchBy: this.state.searchBy,
       query: this.state.query,
@@ -62,7 +39,6 @@ export default class Search extends React.Component {
   submitForm(query) {
     this.setState({
       query,
-      isSearchSubmit: true
     });
     this.submit({query});
   }
@@ -70,7 +46,6 @@ export default class Search extends React.Component {
   sortByChange(sortBy) {
     this.setState({
       sortBy,
-      isSearchSubmit: true
     });
     this.submit({sortBy});
   }
@@ -78,7 +53,6 @@ export default class Search extends React.Component {
   searchByChange(searchBy) {
     this.setState({
       searchBy,
-      isSearchSubmit: true
     });
     this.submit({searchBy});
   }
@@ -88,6 +62,8 @@ export default class Search extends React.Component {
     if (this.state.isSearchSubmit) {
       resTotal = `${+this.props.resultTotal} movie found`;
     }
+
+    console.log(this.props);
 
     return (
       <>
@@ -100,8 +76,8 @@ export default class Search extends React.Component {
             <SearchForm submitForm={this.submitForm} />
             <Radiobuttons 
               className={styles.t_1} 
-              title={checkOptions.title} 
-              list={checkOptions.list} 
+              title={this.props.searchByOptions.title} 
+              list={this.props.searchByOptions.list} 
               change={this.searchByChange}/>
           </div>
         </div>
@@ -109,11 +85,28 @@ export default class Search extends React.Component {
           <div className={styles.q_1}>{resTotal}</div>
           <Radiobuttons 
             className={styles.r_1}
-            title={options.title}
-            list={options.list}
+            title={this.props.sortByOptions.title}
+            list={this.props.sortByOptions.list}
             change={this.sortByChange}/>
         </Westside>
       </>
     )
   }
 }
+
+function mapStateToProps(state) {
+  const { moviesData, searchByOptions, sortByOptions } = state.home;
+  return {
+    movies: moviesData,
+    searchByOptions,
+    sortByOptions,
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    submit: conf => dispatch(homeChange(conf))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

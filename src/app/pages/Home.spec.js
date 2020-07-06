@@ -7,7 +7,7 @@ import { film } from '../mocks/data';
 
 describe('Home component', () => {
 
-  fit('should be render correctly', async () => {
+  it('should be render correctly', async () => {
     const data = new Array(6).fill(film);
     global.fetch = jest.fn().mockImplementation((data) => {
       return Promise.resolve({

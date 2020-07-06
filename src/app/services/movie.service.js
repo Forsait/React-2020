@@ -1,5 +1,5 @@
 export const getMovieList = (opt) => {
-  const url = `/api/movies?offset=6&limit=6&sortBy=${opt.sortBy}&search=${opt.query || ''}&searchBy=${opt.searchBy}&sortOrder=desc`
+  const url = `/api/movies?offset=0&limit=100&sortBy=${opt.sortBy}&search=${opt.query || ''}&searchBy=${opt.searchBy}&sortOrder=desc`
   return fetch(url);
 }
 
