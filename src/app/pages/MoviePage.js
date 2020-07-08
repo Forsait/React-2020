@@ -1,61 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import MovieInfo from '../containers/movie/MovieInfo';
 import MovieList from '../containers/movie/MovieList';
 import Footer from '../components/common/Footer';
+import { moviesListGoodSelector } from '../selectors';
 
-import { getMovieList, getMovieById } from '../services/movie.service';
-
-export default class MoviePage extends React.Component {
+export class MoviePage extends React.Component {
 
   constructor(props){
     super(props);
-
-    this.state = {
-      movie: {},
-      movieList: [],
-    };
-  }
-
-  componentDidMount() {
-    this.loadMovieInfo();
-  }
-
-  loadMovieInfo() {
-    getMovieById(353081)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          movie: res,
-        });
-        console.log('movie', res);
-        this.loadMoviesByGenre(res.genres[0])
-      })
-  }
-
-  loadMoviesByGenre(genre) {
-    const opt = {
-      sortBy: 'release_date',
-      query: genre,
-      searchBy: 'genres'
-    };
-
-    getMovieList(opt)
-      .then(res => res.json())
-      .then((res) => {
-        console.log(res)
-        this.setState({
-          movieList: res.data,
-        });
-      })
   }
 
   render() {
     return <>
-      <MovieInfo movie={this.state.movie} />
-      <MovieList movieArr={this.state.movieList}/>
+      <MovieInfo />
+      <MovieList movieArr={this.props.moviesList}/>
       <Footer />
     </>
   }
 
 }
+
+
+function mapStateToProps(state) {
+  return { moviesList: moviesListGoodSelector(state.movieInfo) };
+}
+
+export default connect(mapStateToProps)(MoviePage);

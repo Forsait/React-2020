@@ -17,16 +17,16 @@ exports[`Search component should be render correctly 1`] = `
         list={
           Array [
             Object {
-              "key": "title",
-              "title": "title",
+              "key": "key 1",
+              "title": "title 1",
             },
             Object {
-              "key": "genres",
-              "title": "genre",
+              "key": "key 2",
+              "title": "title 2",
             },
           ]
         }
-        title="Search by"
+        title="Radio title"
       />
     </div>
   </div>
@@ -37,16 +37,16 @@ exports[`Search component should be render correctly 1`] = `
       list={
         Array [
           Object {
-            "key": "release_date",
-            "title": "release date",
+            "key": "key 1",
+            "title": "title 1",
           },
           Object {
-            "key": "vote_average",
-            "title": "rating",
+            "key": "key 2",
+            "title": "title 2",
           },
         ]
       }
-      title="Sort by"
+      title="Radio title"
     />
   </Westside>
 </Fragment>

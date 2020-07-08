@@ -2,12 +2,8 @@
 
 exports[`Home component should be render correctly 1`] = `
 <Fragment>
-  <MovieInfo
-    movie={Object {}}
-  />
-  <MovieList
-    movieArr={Array []}
-  />
+  <Connect(MovieInfo) />
+  <MovieList />
   <Footer />
 </Fragment>
 `;

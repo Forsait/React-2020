@@ -12,3 +12,24 @@ export const film = {
   vote_average: 0,
   vote_count: 28,
 }
+
+export const moviesData = {
+  data: new Array(6).fill(film),
+  limit: 0,
+  offset: 0,
+  total: 0,
+}
+
+export const radioOptions = {
+  title: 'Radio title',
+  list: [
+    {
+      key: 'key 1',
+      title: 'title 1'
+    },
+    {
+      key: 'key 2',
+      title: 'title 2'
+    }
+  ],
+}
