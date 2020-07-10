@@ -22,6 +22,7 @@ module.exports = {
     port: 3000,
     inline: true,
     overlay: true,
+    historyApiFallback: true,
     proxy: {
       '/api': {
         target: 'https://reactjs-cdp.herokuapp.com/',
