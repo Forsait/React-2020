@@ -2,7 +2,7 @@
 
 exports[`Home component should be render correctly 1`] = `
 <Fragment>
-  <Connect(Search) />
+  <withRouter(Connect(Search)) />
   <MovieList />
   <Footer />
 </Fragment>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from "react-router";
 
 import { connect } from 'react-redux';
 import { homeChange } from '../../actions/home';
@@ -8,6 +9,7 @@ import Header from '../../components/common/Header';
 import Westside from '../../components/common/Westside';
 import SearchForm from '../../components/searchForm/SearchForm';
 import Radiobuttons from '../../components/common/Radiobuttons';
+import { parseQueryParams, searchParamsToString } from '../../services/url-utils.service';
 
 export class Search extends React.Component {
   constructor(props){
@@ -24,16 +26,37 @@ export class Search extends React.Component {
   }
 
   componentDidMount() {
-    this.submit();
+    this.checkQueryParams()
   }
 
-  submit(stateNexValue = {}) {
-    this.props.submit({
+  checkQueryParams() {
+    const {searchBy = 'title', sortBy = 'release_date', query = ''} = parseQueryParams(window.location.search);
+    const nexState = {
+      searchBy,
+      sortBy,
+      query,
+    };
+    this.setState(nexState);
+    this.submit(nexState, false);
+  }
+
+  saveQueryParams(params) {
+    const searchStr = searchParamsToString(params);
+    window.history.replaceState({}, '', location.pathname + searchStr);
+  }
+
+  submit(stateNexValue = {}, updateUrl = true) {
+    const obj = {
       searchBy: this.state.searchBy,
       query: this.state.query,
       sortBy: this.state.sortBy,
       ...stateNexValue
-    });
+    };
+
+    this.props.submit(obj);
+    if (updateUrl) {
+      this.saveQueryParams({query: obj.query});
+    }
   }
 
   submitForm(query) {
@@ -75,7 +98,7 @@ export class Search extends React.Component {
             <Radiobuttons 
               className={styles.t_1} 
               title={this.props.searchByOptions.title} 
-              list={this.props.searchByOptions.list} 
+              list={this.props.searchByOptions.list}
               change={this.searchByChange}/>
           </div>
         </div>
@@ -107,4 +130,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default withRouter( connect(mapStateToProps, mapDispatchToProps)(Search) );

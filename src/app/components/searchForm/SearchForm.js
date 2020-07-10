@@ -19,7 +19,7 @@ export default class SearchForm extends React.Component {
     return (
       <form className={styles.wrap} onSubmit={this.submitSearch}>
         <div className={styles.m_12}>
-          <input ref={this.input} type="text" placeholder="Search" />
+          <input ref={this.input} type="text" placeholder="Search" defaultValue={this.props.defaultVal} />
           <button className={styles.btn_submit} type="submit">Search</button>
         </div>
       </form>

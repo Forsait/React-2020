@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { getMovieInfo } from '../actions/movie-info';
+
 import MovieInfo from '../containers/movie/MovieInfo';
 import MovieList from '../containers/movie/MovieList';
 import Footer from '../components/common/Footer';
@@ -10,6 +12,16 @@ export class MoviePage extends React.Component {
 
   constructor(props){
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.getMovieInfo(this.props.match.params.id);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.props.getMovieInfo(this.props.match.params.id);
+    }
   }
 
   render() {
@@ -27,4 +39,10 @@ function mapStateToProps(state) {
   return { moviesList: moviesListGoodSelector(state.movieInfo) };
 }
 
-export default connect(mapStateToProps)(MoviePage);
+const mapDispatchToProps = dispatch => {
+  return {
+    getMovieInfo: id => dispatch(getMovieInfo(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);
