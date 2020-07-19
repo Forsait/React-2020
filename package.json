@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "cross-env NODE_ENV=development node server/index.js",
     "start": "webpack-dev-server --open",
-    "build": "webpack",
+    "build": "next build ./src/app",
     "build-prod": "cross-env NODE_ENV=production webpack",
     "test": "jest --coverage",
     "e2e": "cypress open"
@@ -29,7 +30,9 @@
     "enzyme-to-json": "^3.5.0",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "http-proxy-middleware": "^1.0.5",
     "jest": "^26.0.1",
+    "next-images": "^1.4.0",
     "redux-devtools": "^3.5.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
@@ -40,6 +43,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "next": "^9.4.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",

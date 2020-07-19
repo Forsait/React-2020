@@ -5,6 +5,7 @@ import Search from '../containers/search/Search';
 import MovieList from '../containers/movie/MovieList';
 import Footer from '../components/common/Footer';
 import { moviesDataSelector } from '../selectors';
+import { homeChange } from '../actions/home';
 
 export class Home extends React.Component {
 

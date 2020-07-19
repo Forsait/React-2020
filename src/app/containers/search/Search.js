@@ -1,5 +1,6 @@
 import React from 'react';
-import { withRouter } from "react-router";
+import { withRouter } from 'next/router';
+import { compose } from 'redux';
 
 import { connect } from 'react-redux';
 import { homeChange } from '../../actions/home';
@@ -9,7 +10,7 @@ import Header from '../../components/common/Header';
 import Westside from '../../components/common/Westside';
 import SearchForm from '../../components/searchForm/SearchForm';
 import Radiobuttons from '../../components/common/Radiobuttons';
-import { parseQueryParams, searchParamsToString } from '../../services/url-utils.service';
+import { parseQueryParams, searchParamsToString } from '../../services/url-utils.service'
 
 export class Search extends React.Component {
   constructor(props){
@@ -130,4 +131,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter( connect(mapStateToProps, mapDispatchToProps)(Search) );
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps)
+)(Search)
