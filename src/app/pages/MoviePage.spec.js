@@ -7,6 +7,7 @@ import { film } from '../mocks/data';
 describe('Home component', () => {
 
   it('should be render correctly', () => {
+    MoviePage.prototype.componentDidMount = jest.fn();
     const com = shallow(<MoviePage movieArr={[]} />);
     expect(com).toMatchSnapshot();
   })

@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getMovieInfo } from '../../actions/movie-info';
-
 import styles from './MovieInfo.module.scss';
 import Header from '../../components/common/Header';
 import Westside from '../../components/common/Westside';
@@ -13,10 +11,6 @@ import searchIcon from 'Assets/icon-search.svg';
 export class MovieInfo extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    this.props.getMovieInfo(353081);
   }
 
   render() {
@@ -67,10 +61,4 @@ function mapStateToProps(state) {
   return { movie: movieInfo };
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getMovieInfo: id => dispatch(getMovieInfo(id))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);
+export default connect(mapStateToProps)(MovieInfo);
