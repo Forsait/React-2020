@@ -26,9 +26,9 @@ export class Search extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.checkQueryParams()
-  }
+  // componentDidMount() {
+  //   this.checkQueryParams()
+  // }
 
   checkQueryParams() {
     const {searchBy = 'title', sortBy = 'release_date', query = ''} = parseQueryParams(window.location.search);

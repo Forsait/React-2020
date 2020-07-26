@@ -10,8 +10,9 @@ export const initialState = {
     offset: 0,
     total: 0
   },
-  searchBy: '',
-  sortBy: '',
+  query: '',
+  searchBy: 'title',
+  sortBy: 'release_date',
   limit: 6,
   offset: 0,
   searchByOptions: {

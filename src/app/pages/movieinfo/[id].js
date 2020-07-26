@@ -1,4 +1,5 @@
 import React from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router'
 
@@ -9,6 +10,11 @@ import MovieList from '../../containers/movie/MovieList';
 import Footer from '../../components/common/Footer';
 import { moviesListGoodSelector } from '../../selectors';
 
+function getMovieId(url) {
+  const last = url.lastIndexOf('/');
+  return url.slice(last + 1);
+}
+
 export class MoviePage extends React.Component {
 
   constructor(props){
@@ -16,16 +22,14 @@ export class MoviePage extends React.Component {
   }
 
   getMovieId() {
-    const href = window.location.href;
-    const last = href.lastIndexOf('/');
-    return href.slice(last + 1);
+    return getMovieId(window.location.href);
   }
 
-  componentDidMount() {
-    this.props.router.events.on('routeChangeComplete', (url) => {
-      this.props.getMovieInfo( this.getMovieId() );
-    })
-  }
+  // componentDidMount() {
+  //   this.props.router.events.on('routeChangeComplete', (url) => {
+  //     this.props.getMovieInfo( this.getMovieId() );
+  //   })
+  // }
 
   render() {
     return <>
@@ -35,6 +39,12 @@ export class MoviePage extends React.Component {
     </>
   }
 
+}
+
+MoviePage.getInitialProps = async function({store, asPath}) {
+  const id = getMovieId(asPath);
+  await store.dispatch(getMovieInfo(id));
+  return {1: 1}
 }
 
 
@@ -48,4 +58,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter( connect(mapStateToProps, mapDispatchToProps)(MoviePage) );
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps)
+)(MoviePage);

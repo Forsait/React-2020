@@ -24,6 +24,17 @@ export class Home extends React.Component {
   }
 }
 
+Home.getInitialProps = async function({store, query}) {
+  const storeHome = store.getState().home;
+  const conf = {
+    searchBy: storeHome.searchBy,
+    query: query.query || storeHome.query,
+    sortBy: storeHome.sortBy,
+  };
+  await store.dispatch(homeChange(conf));
+  return {1: 1}
+}
+
 
 function mapStateToProps(state) {
   return { movies: moviesDataSelector(state.home) };
