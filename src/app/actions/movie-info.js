@@ -33,7 +33,7 @@ export const getMovieInfo = (id) => {
           });
         },
         err => {
-          // do nothing
+          console.log(err);
         }
       )
   }

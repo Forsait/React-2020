@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { act } from "react-dom/test-utils";
 
-import { Home } from './Home';
+import { Home } from './index';
 import { film } from '../mocks/data';
 
 describe('Home component', () => {

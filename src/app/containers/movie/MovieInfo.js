@@ -6,11 +6,20 @@ import Header from '../../components/common/Header';
 import Westside from '../../components/common/Westside';
 import { getYear } from '../../utils/date';
 
-import searchIcon from 'Assets/icon-search.svg';
+import searchIcon from '../../../assets/icon-search.svg';
 
 export class MovieInfo extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      src: null
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      src: searchIcon
+    });
   }
 
   render() {

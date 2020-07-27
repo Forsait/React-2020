@@ -1,9 +1,13 @@
+function getBaseURL() {
+  return process.browser ? '/api' : 'https://reactjs-cdp.herokuapp.com';
+}
+
 export const getMovieList = (opt) => {
-  const url = `/api/movies?offset=0&limit=100&sortBy=${opt.sortBy}&search=${opt.query || ''}&searchBy=${opt.searchBy}&sortOrder=desc`
-  return fetch(url);
+  const query = `/movies?offset=0&limit=100&sortBy=${opt.sortBy}&search=${opt.query || ''}&searchBy=${opt.searchBy}&sortOrder=desc`
+  return fetch(getBaseURL() + query);
 }
 
 export const getMovieById = (id) => {
-  const url = `/api/movies/` + id;
-  return fetch(url);
+  const url = `/movies/` + id;
+  return fetch(getBaseURL() + url);
 }

@@ -18,6 +18,7 @@ export const homeChange = (opt) => {
         },
         err => {
           // do nothing
+          console.log(err)
         }
       )
   }

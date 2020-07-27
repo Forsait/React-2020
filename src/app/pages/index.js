@@ -5,6 +5,7 @@ import Search from '../containers/search/Search';
 import MovieList from '../containers/movie/MovieList';
 import Footer from '../components/common/Footer';
 import { moviesDataSelector } from '../selectors';
+import { homeChange } from '../actions/home';
 
 export class Home extends React.Component {
 
@@ -21,6 +22,17 @@ export class Home extends React.Component {
       </>
     )
   }
+}
+
+Home.getInitialProps = async function({store, query}) {
+  const storeHome = store.getState().home;
+  const conf = {
+    searchBy: storeHome.searchBy,
+    query: query.query || storeHome.query,
+    sortBy: storeHome.sortBy,
+  };
+  await store.dispatch(homeChange(conf));
+  return {1: 1}
 }
 
 

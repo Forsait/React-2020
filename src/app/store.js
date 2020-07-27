@@ -1,8 +1,24 @@
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk'
+import thunkMiddleware from 'redux-thunk'
+import { createWrapper } from "next-redux-wrapper";
+import { HYDRATE } from "next-redux-wrapper";
 
-import { rootReducer } from './reducers/index';
+import { rootReducer, initialState } from './reducers/index';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const reducer = (state, action) => {
+  if(action.type === HYDRATE) {
+    const nextState = {
+      ...state,
+      ...action.payload,
+    };
+    return nextState;
+  } else {
+    return rootReducer(state, action)
+  }
+}
 
-export default store;
+const initStore = (data) => {
+  return createStore(reducer, applyMiddleware(thunkMiddleware))
+}
+
+export const wrapper = createWrapper(initStore);
