@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-} from "react-router-dom";
+} from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import store from './app/store';
@@ -18,7 +18,7 @@ import NotFound from './app/pages/NotFound';
 
 
 ReactDOM.render(
-  <div className='main_container'>
+  <div className="main_container">
     <ErrorBoundary>
       <Provider store={store}>
         <Router>
@@ -31,5 +31,5 @@ ReactDOM.render(
       </Provider>
     </ErrorBoundary>
   </div>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

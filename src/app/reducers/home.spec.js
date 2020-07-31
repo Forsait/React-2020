@@ -8,8 +8,8 @@ import { moviesData } from '../mocks/data';
 
 describe('HOME reducer', () => {
   it('should return the initial state', () => {
-    expect(reducer(undefined, {})).toEqual(initialState)
-  })
+    expect(reducer(undefined, {})).toEqual(initialState);
+  });
 
   it('should handle HOME_CHANGE', () => {
     expect(
@@ -18,22 +18,20 @@ describe('HOME reducer', () => {
         payload: {
           searchBy: 'searchBy',
           sortBy: 'sortBy',
-        }
-      })
+        },
+      }),
     ).toEqual({
       searchBy: 'searchBy',
       sortBy: 'sortBy',
     });
   });
 
-
   it('should handle GET_HOME_FIMLS_SUC', () => {
     expect(
       reducer([], {
         type: GET_HOME_FIMLS_SUC,
-        payload: moviesData
-      })
+        payload: moviesData,
+      }),
     ).toEqual({ moviesData });
   });
-
 });

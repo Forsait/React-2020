@@ -10,7 +10,7 @@ describe('ErrorBoundary', () => {
     const com = shallow(
       <ErrorBoundary>
         <NullComp />
-      </ErrorBoundary>
+      </ErrorBoundary>,
     );
 
     const error = new Error('test');

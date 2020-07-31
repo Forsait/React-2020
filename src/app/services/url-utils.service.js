@@ -1,4 +1,4 @@
-//"?sortBy=45&searchBy=43"
+/* eslint-disable */
 export const parseQueryParams = (searchString) => {
   const arr = searchString.slice(1).split('&');
   return arr.reduce((acc, cur) => {
@@ -6,8 +6,7 @@ export const parseQueryParams = (searchString) => {
     acc[trr[0]] = trr[1];
     return acc;
   }, {});
-}
+};
 
-export const searchParamsToString = (searchParamObj) => {
-  return '?' + Object.entries(searchParamObj).map(itemArr => itemArr.join('=')).join('&');
-}
+export const searchParamsToString = (searchParamObj) => 
+  `?${Object.entries(searchParamObj).map((itemArr) => itemArr.join('=')).join('&')}`;

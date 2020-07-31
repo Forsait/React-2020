@@ -1,9 +1,22 @@
+// @flow
 import {
   GET_MOVIE_INFO,
   GET_MOVIE_INFO_SUC,
-  GET_MOVIES_LIST_SUC
+  GET_MOVIES_LIST_SUC,
 } from '../actions/movie-info';
 
+import type { Movie, MovieData } from '../models/movie';
+
+type State = {
+  movieId: number,
+  movieInfo: Movie,
+  moviesData: MovieData,
+}
+
+type Action = {
+  type: string,
+  payload: any,
+}
 
 export const initialState = {
   movieId: 0,
@@ -22,26 +35,26 @@ export const initialState = {
     vote_count: 0,
   },
   moviesData: {
-    data: []
-  }
+    data: [],
+  },
 };
 
-export const movieInfoReducer = (state = initialState, action) => {
+export const movieInfoReducer = (state: State = initialState, action: Action) => {
   switch (action.type) {
     case GET_MOVIE_INFO:
-      return { 
+      return {
         ...state,
       };
     case GET_MOVIE_INFO_SUC:
-      return { 
+      return {
         ...state,
-        movieInfo: action.payload
-      }
+        movieInfo: action.payload,
+      };
     case GET_MOVIES_LIST_SUC:
-      return { 
+      return {
         ...state,
-        moviesData: action.payload
-      }
+        moviesData: action.payload,
+      };
     default:
       return state;
   }

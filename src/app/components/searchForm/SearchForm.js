@@ -2,8 +2,9 @@ import React from 'react';
 
 import styles from './SearchForm.module.scss';
 
-export default class SearchForm extends React.Component {
+import Button from '../common/Button';
 
+export default class SearchForm extends React.Component {
   constructor(props) {
     super(props);
     this.submitSearch = this.submitSearch.bind(this);
@@ -20,9 +21,9 @@ export default class SearchForm extends React.Component {
       <form className={styles.wrap} onSubmit={this.submitSearch}>
         <div className={styles.m_12}>
           <input ref={this.input} type="text" placeholder="Search" defaultValue={this.props.defaultVal} />
-          <button className={styles.btn_submit} type="submit">Search</button>
+          <Button type="submit">Search</Button>
         </div>
       </form>
-    )
+    );
   }
 }

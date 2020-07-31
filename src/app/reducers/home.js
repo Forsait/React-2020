@@ -1,14 +1,34 @@
+// @flow
 import {
   HOME_CHANGE,
   GET_HOME_FIMLS_SUC,
 } from '../actions/home';
+
+import type { MovieData } from '../models/movie';
+import type { Radio } from '../models/radio';
+
+type Store = {
+  moviesData: MovieData,
+  query: string,
+  searchBy: string,
+  sortBy: string,
+  limit: number,
+  offset: number,
+  searchByOptions: Radio,
+  sortByOptions: Radio,
+}
+
+type Action = {
+  type: String,
+  payload: any,
+}
 
 export const initialState = {
   moviesData: {
     data: [],
     limit: 0,
     offset: 0,
-    total: 0
+    total: 0,
   },
   query: '',
   searchBy: 'title',
@@ -20,12 +40,12 @@ export const initialState = {
     list: [
       {
         key: 'title',
-        title: 'title'
+        title: 'title',
       },
       {
         key: 'genres',
-        title: 'genre'
-      }
+        title: 'genre',
+      },
     ],
   },
   sortByOptions: {
@@ -33,20 +53,20 @@ export const initialState = {
     list: [
       {
         key: 'release_date',
-        title: 'release date'
+        title: 'release date',
       },
       {
         key: 'vote_average',
-        title: 'rating'
-      }
+        title: 'rating',
+      },
     ],
   },
 };
 
-export const homeReducer = (state = initialState, action) => {
+export const homeReducer = (state: Store = initialState, action: Action) => {
   switch (action.type) {
     case HOME_CHANGE:
-      return { 
+      return {
         ...state,
         searchBy: action.payload.searchBy,
         sortBy: action.payload.sortBy,
@@ -54,8 +74,8 @@ export const homeReducer = (state = initialState, action) => {
     case GET_HOME_FIMLS_SUC:
       return {
         ...state,
-        moviesData: action.payload
-      }
+        moviesData: action.payload,
+      };
     default:
       return state;
   }
