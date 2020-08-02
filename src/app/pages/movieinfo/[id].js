@@ -1,7 +1,8 @@
+// @flow
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { withRouter } from 'next/router'
+import { withRouter } from 'next/router';
 
 import { getMovieInfo } from '../../actions/movie-info';
 
@@ -10,55 +11,56 @@ import MovieList from '../../containers/movie/MovieList';
 import Footer from '../../components/common/Footer';
 import { moviesListGoodSelector } from '../../selectors';
 
-function getMovieId(url) {
+import type { Movie } from '../../models/movie';
+
+function getMovieId(url: string): string {
   const last = url.lastIndexOf('/');
   return url.slice(last + 1);
 }
 
-export class MoviePage extends React.Component {
+type Props = {
+  moviesList: Movie[]
+}
 
-  constructor(props){
+export class MoviePage extends React.Component<Props> {
+  constructor(props: Props) {
     super(props);
   }
 
+  /* eslint-disable class-methods-use-this */
   getMovieId() {
     return getMovieId(window.location.href);
   }
 
-  // componentDidMount() {
-  //   this.props.router.events.on('routeChangeComplete', (url) => {
-  //     this.props.getMovieInfo( this.getMovieId() );
-  //   })
-  // }
-
   render() {
-    return <>
-      <MovieInfo />
-      <MovieList movieArr={this.props.moviesList}/>
-      <Footer />
-    </>
+    const { moviesList } = this.props;
+    return (
+      <>
+        <MovieInfo />
+        <MovieList movieArr={moviesList} />
+        {/* $FlowFixMe */}
+        <Footer />
+      </>
+    );
   }
-
 }
 
-MoviePage.getInitialProps = async function({store, asPath}) {
+// $FlowFixMe
+MoviePage.getInitialProps = async function name({ store, asPath }) {
   const id = getMovieId(asPath);
   await store.dispatch(getMovieInfo(id));
-  return {1: 1}
-}
-
+  return { '1': 1 };
+};
 
 function mapStateToProps(state) {
   return { moviesList: moviesListGoodSelector(state.movieInfo) };
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getMovieInfo: id => dispatch(getMovieInfo(id))
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  getMovieInfo: (id) => dispatch(getMovieInfo(id)),
+});
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps),
 )(MoviePage);

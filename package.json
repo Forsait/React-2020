@@ -9,15 +9,25 @@
     "build": "next build ./src/app",
     "build-prod": "cross-env NODE_ENV=production webpack",
     "test": "jest --coverage",
-    "e2e": "cypress open"
+    "e2e": "cypress open",
+    "lint": "eslint src/",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "flow": "flow"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
+    "@babel/preset-flow": "^7.10.4",
     "@babel/preset-react": "^7.9.4",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/react": "^5.3.19",
     "@testing-library/react": "^10.4.3",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
@@ -28,7 +38,14 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
+    "eslint": "^7.5.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.0",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.0",
     "file-loader": "^6.0.0",
+    "flow-bin": "^0.130.0",
     "html-webpack-plugin": "^4.3.0",
     "http-proxy-middleware": "^1.0.5",
     "jest": "^26.0.1",
@@ -42,17 +59,20 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@types/jest": "^26.0.7",
     "express": "^4.17.1",
     "next": "^9.4.4",
     "next-redux-wrapper": "^6.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-jss": "^10.3.0",
     "react-redux": "^7.2.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "styled-components": "^5.1.1"
   }
 }

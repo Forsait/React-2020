@@ -4,10 +4,9 @@ import { shallow } from 'enzyme';
 import SearchForm from './SearchForm';
 
 describe('SearchForm component', () => {
-
   it('should be render correctly', () => {
     const com = shallow(<SearchForm />);
-    expect(com).toMatchSnapshot()
+    expect(com).toMatchSnapshot();
   });
 
   it('should benn called submitSearch', () => {
@@ -18,5 +17,4 @@ describe('SearchForm component', () => {
     com.find('form').simulate('submit');
     expect(submitSearch).toHaveBeenCalled();
   });
-
 });

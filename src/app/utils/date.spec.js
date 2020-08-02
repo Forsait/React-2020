@@ -1,7 +1,6 @@
 import { getYear } from './date';
 
 describe('test date utils', () => {
-
   it('should return year', () => {
     expect(getYear('2020-04-04')).toEqual('2020');
   });

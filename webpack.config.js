@@ -1,8 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const CopyPlugin = require('copy-webpack-plugin');
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const nodeEnv = process.env.NODE_ENV ? process.env.NODE_ENV.trim() : '';
 const isProd = nodeEnv === 'production';
@@ -75,7 +73,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.jsx'],
     alias: {
       App: path.resolve(__dirname, 'src/app/'),
       Assets: path.resolve(__dirname, 'src/assets/'),
@@ -92,10 +90,5 @@ module.exports = {
       favicon: './src/assets/react.svg'
     }),
     new CleanWebpackPlugin(),
-    // new CopyPlugin({
-    //   patterns: [
-    //     { from: 'src/assets', to: 'assets' },
-    //   ],
-    // }),
   ]
 };

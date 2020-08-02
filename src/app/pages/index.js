@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -7,24 +8,32 @@ import Footer from '../components/common/Footer';
 import { moviesDataSelector } from '../selectors';
 import { homeChange } from '../actions/home';
 
-export class Home extends React.Component {
+import type { MovieData } from '../models/movie';
 
-  constructor(props){
+type Props = {
+  movies: MovieData
+}
+
+export class Home extends React.Component<Props> {
+  constructor(props: Props) {
     super(props);
   }
 
   render() {
+    const { movies } = this.props;
     return (
       <>
         <Search />
-        <MovieList movieArr={this.props.movies.data}/>
+        <MovieList movieArr={movies.data} />
+        {/* $FlowFixMe */}
         <Footer />
       </>
-    )
+    );
   }
 }
 
-Home.getInitialProps = async function({store, query}) {
+// $FlowFixMe
+Home.getInitialProps = async function name({ store, query }) {
   const storeHome = store.getState().home;
   const conf = {
     searchBy: storeHome.searchBy,
@@ -32,9 +41,8 @@ Home.getInitialProps = async function({store, query}) {
     sortBy: storeHome.sortBy,
   };
   await store.dispatch(homeChange(conf));
-  return {1: 1}
-}
-
+  return { '1': 1 };
+};
 
 function mapStateToProps(state) {
   return { movies: moviesDataSelector(state.home) };
