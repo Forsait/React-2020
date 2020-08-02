@@ -1,18 +1,21 @@
 // @flow
 import React from 'react';
+// $FlowFixMe
+import { createUseStyles } from 'react-jss';
 
 import Brand from './Brand';
 
-const footerStyle = {
-  justifyContent: 'center',
-};
+const useStyles = createUseStyles({
+  container: {
+    justifyContent: 'center',
+  },
+});
 
-export default class Footer extends React.Component<void> {
-  render() {
-    return (
-      <div style={footerStyle} className="westside">
-        <Brand />
-      </div>
-    );
-  }
+export default function Footer() {
+  const classes = useStyles();
+  return (
+    <div className={`westside ${classes.container}`}>
+      <Brand />
+    </div>
+  );
 }

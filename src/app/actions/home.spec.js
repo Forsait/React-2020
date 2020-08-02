@@ -15,7 +15,7 @@ describe('Home component', () => {
   });
 
   it('creates GET_HOME_FIMLS_SUC when fetching films has been done', async () => {
-    global.fetch = jest.fn().mockImplementation((data) => Promise.resolve({
+    global.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       json: () => Promise.resolve(moviesData),
     }));
 

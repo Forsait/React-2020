@@ -30,3 +30,7 @@ input, button, button:focus{
   height: 70px;
   margin: 0 120px;
 }
+
+input:checked ~ span {
+  background-color: #f65261;
+}

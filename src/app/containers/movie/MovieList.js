@@ -17,8 +17,9 @@ export default class MovieList extends React.Component<Props> {
 
   render() {
     let moviesResult;
-    if (this.props.movieArr.length > 0) {
-      const movies = this.props.movieArr.map((item) => <Movie key={item.id} data={item} />);
+    const { movieArr } = this.props;
+    if (movieArr.length > 0) {
+      const movies = movieArr.map((item) => <Movie key={item.id} data={item} />);
       moviesResult = (
         <div className={styles.movie_container}>
           {movies}

@@ -27,15 +27,17 @@ export class MoviePage extends React.Component<Props> {
     super(props);
   }
 
+  /* eslint-disable class-methods-use-this */
   getMovieId() {
     return getMovieId(window.location.href);
   }
 
   render() {
+    const { moviesList } = this.props;
     return (
       <>
         <MovieInfo />
-        <MovieList movieArr={this.props.moviesList} />
+        <MovieList movieArr={moviesList} />
         {/* $FlowFixMe */}
         <Footer />
       </>
@@ -44,7 +46,7 @@ export class MoviePage extends React.Component<Props> {
 }
 
 // $FlowFixMe
-MoviePage.getInitialProps = async function ({ store, asPath }) {
+MoviePage.getInitialProps = async function name({ store, asPath }) {
   const id = getMovieId(asPath);
   await store.dispatch(getMovieInfo(id));
   return { '1': 1 };

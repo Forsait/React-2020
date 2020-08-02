@@ -22,11 +22,13 @@ describe('Home component', () => {
   it('creates GET_HOME_FIMLS_SUC when fetching films has been done', async () => {
     global.fetch = jest.fn().mockImplementation((url) => Promise.resolve({
       json: () => {
+        /* eslint-disable */
         for (const key in serviceResponses) {
           if (url.indexOf(key) !== -1) {
             return Promise.resolve(serviceResponses[key]);
           }
         }
+        return null;
       },
     }));
 

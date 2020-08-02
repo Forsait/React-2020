@@ -20,10 +20,11 @@ export class Home extends React.Component<Props> {
   }
 
   render() {
+    const { movies } = this.props;
     return (
       <>
         <Search />
-        <MovieList movieArr={this.props.movies.data} />
+        <MovieList movieArr={movies.data} />
         {/* $FlowFixMe */}
         <Footer />
       </>
@@ -32,7 +33,7 @@ export class Home extends React.Component<Props> {
 }
 
 // $FlowFixMe
-Home.getInitialProps = async function ({ store, query }) {
+Home.getInitialProps = async function name({ store, query }) {
   const storeHome = store.getState().home;
   const conf = {
     searchBy: storeHome.searchBy,

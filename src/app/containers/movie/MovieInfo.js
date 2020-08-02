@@ -22,18 +22,17 @@ type State = {
 export class MovieInfo extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = {
-      src: searchIcon,
-    };
   }
 
   render() {
+    const { movie } = this.props;
+
     let genreView = null;
-    if (this.props.movie.genres) {
+    if (movie.genres) {
       genreView = (
         <div>
           Film by
-          <span className={styles.som}>{this.props.movie.genres[0]}</span>
+          <span className={styles.som}>{movie.genres[0]}</span>
           {' '}
           genre
         </div>
@@ -44,30 +43,30 @@ export class MovieInfo extends React.Component<Props, State> {
       <>
         <div className={styles.container}>
           <Header>
-            <a href="#" className={styles.search_link}>
-              <img src={searchIcon} />
-            </a>
+            <span className={styles.search_link}>
+              <img src={searchIcon} alt="alt" />
+            </span>
           </Header>
 
           <div className={styles.movie}>
-            <img src={this.props.movie.poster_path} className={styles.poster} />
+            <img src={movie.poster_path} className={styles.poster} alt="alt" />
             <div className={styles.info}>
               <div className={styles.title_box}>
-                <h1 className={styles.title}>{this.props.movie.title}</h1>
-                <span className={styles.rating}>{this.props.movie.vote_average}</span>
+                <h1 className={styles.title}>{movie.title}</h1>
+                <span className={styles.rating}>{movie.vote_average}</span>
               </div>
               <div className={styles.subtitle}>Oscar winning movie</div>
               <div className={styles.maus}>
                 <div className={styles.t4}>
-                  <span className={styles.t4_1}>{ getYear(this.props.movie.release_date) }</span>
+                  <span className={styles.t4_1}>{ getYear(movie.release_date) }</span>
                   <span className={styles.t4_2}>year</span>
                 </div>
                 <div className={styles.t4}>
-                  <span className={styles.t4_1}>{this.props.movie.runtime || '-'}</span>
+                  <span className={styles.t4_1}>{movie.runtime || '-'}</span>
                   <span className={styles.t4_2}>min</span>
                 </div>
               </div>
-              <div className={styles.description}>{this.props.movie.overview}</div>
+              <div className={styles.description}>{movie.overview}</div>
             </div>
           </div>
         </div>

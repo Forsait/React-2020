@@ -71,14 +71,16 @@ export class Search extends React.Component<Props, State> {
 
   saveQueryParams(query: string) {
     const searchStr = searchParamsToString({ query });
+    /* eslint-disable */
     window.history.replaceState({}, '', location.pathname + searchStr);
   }
 
   submit(stateNexValue: any = {}, updateUrl: boolean = true) {
+    const { searchBy, query, sortBy } = this.state;
     const obj = {
-      searchBy: this.state.searchBy,
-      query: this.state.query,
-      sortBy: this.state.sortBy,
+      searchBy,
+      query,
+      sortBy,
       ...stateNexValue,
     };
 
@@ -111,8 +113,11 @@ export class Search extends React.Component<Props, State> {
   }
 
   render() {
+    const { searchByOptions, sortByOptions, resultTotal } = this.props;
+    const { query } = this.state;
+
     let resTotal = '';
-    resTotal = `${+this.props.resultTotal} movie found`;
+    resTotal = `${+resultTotal} movie found`;
 
     return (
       <>
@@ -122,11 +127,11 @@ export class Search extends React.Component<Props, State> {
 
           <div className={styles.form_container}>
             <h1>FIND YOUR MOVIE</h1>
-            <SearchForm submitForm={this.submitForm} defaultVal={this.state.query} />
+            <SearchForm submitForm={this.submitForm} defaultVal={query} />
             <Radiobuttons
               className={styles.t_1}
-              title={this.props.searchByOptions.title}
-              list={this.props.searchByOptions.list}
+              title={searchByOptions.title}
+              list={searchByOptions.list}
               change={this.searchByChange}
             />
           </div>
@@ -135,8 +140,8 @@ export class Search extends React.Component<Props, State> {
           <div className={styles.q_1}>{resTotal}</div>
           <Radiobuttons
             className={styles.r_1}
-            title={this.props.sortByOptions.title}
-            list={this.props.sortByOptions.list}
+            title={sortByOptions.title}
+            list={sortByOptions.list}
             change={this.sortByChange}
           />
         </Westside>

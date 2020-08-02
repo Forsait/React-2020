@@ -25,6 +25,7 @@ class MyApp extends App {
     const { Component, ctx } = this.props;
     return (
       <ErrorBoundary>
+        {/* eslint-disable */}
         <Component {...ctx} />
       </ErrorBoundary>
     );
